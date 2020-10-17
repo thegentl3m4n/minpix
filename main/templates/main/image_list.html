@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% block content %}
+	
+	<h1>this is where all the images go.</h1>
+	{% for image in IMage %}
+
+	<article class="media content-section">
+		<div class="media-body">
+			<div class="article-metadata">
+				{{ image.title }}
+				<small class="text-muted">{{ image.date_added|date:"F d, Y" }}</small>
+				<a href="{{ image.image_file.url }}" download="{{ image.image_file }}">Download</a>
+			</div>
+		</div>
+	</article>
+	{% endfor %}
+
+
+{% endblock content %}
