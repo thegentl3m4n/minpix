@@ -19,8 +19,4 @@ class ImageListView(ListView):
 class ImageCreateView(CreateView):
 	model = IMage
 	fields = ['title', 'image_file']
-	template_name = 'main/image_add.html'
-
-#def ImageListView(request):
-#	result = IMage.objects.all()
-#	return render(request, 'main/images.html', {'IMage':result})
+	
