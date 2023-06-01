@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: gunicorn minpix.wsgi:application --bind 0.0.0.0:8000
+    restart: always
+    expose:
+    - 8000
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    volumes:
+      - type: bind
+        source: ./    # here you'll have to bind the main folder and then change static file path in nginx.conf in /nginx/ folder
+        target: /app
+    depends_on:
+      - web
+    restart: always
